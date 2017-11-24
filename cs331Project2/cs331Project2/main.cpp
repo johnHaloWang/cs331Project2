@@ -17,7 +17,7 @@ void printArr(size_t n, int * input);
 int * createArray(int n);
 void partition(int index, int high, int& pivotpoint, int * S);
 void swap(int index1, int index2, int * S);
-void quicksort(int low, int high, int * S);
+void quicksort_recursive(int low, int high, int * S);
 
 int main(int argc, char *argv[])
 {
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     printArr(8, S);
     //mergesort(8, S);
-    quicksort(0, 7, S);
+    quicksort_recursive(0, 7, S);
     cout<<"final"<<endl;
     printArr(8, S);
     return 0;
@@ -216,12 +216,12 @@ void mergesort(int n, int * S){
  * Select-kth 3 will implement the Algorithm 3 Quicksort recursively
  * */
 
-void quicksort(int low, int high, int * S){
+void quicksort_recursive(int low, int high, int * S){
     int pivotpoint;
     if(high > low){
         partition(low, high, pivotpoint, S);
-        quicksort(low, pivotpoint - 1, S);
-        quicksort(pivotpoint + 1, high, S);
+        quicksort_recursive(low, pivotpoint - 1, S);
+        quicksort_recursive(pivotpoint + 1, high, S);
     }
 
 }
